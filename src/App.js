@@ -19,18 +19,22 @@ class App extends Component {
     this.setState({ value: "" });
   };
 
+  
   render() {
+    const {data} = this.state;
+    const {value} = this.state;
+    
     return (
       <div className="App">
         <input
           className="todo-input"
           onChange={this.handleChange}
-          value={this.state.value}
+          value={value}
           placeholder="Добавьте пункт"
         />
         <button onClick={this.addPost}>Добавить</button>
         <ul className="todo-container">
-          {this.state.data.map(d => <NewsPost key={d}>{d}</NewsPost>)}
+          {data.map(d => <NewsPost key={d}>{d}</NewsPost>)}
         </ul>
       </div>
     );
