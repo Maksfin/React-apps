@@ -3,9 +3,11 @@ import "./NewsPost.css";
 
 class NewsPost extends Component {
   render() {
-    const { val } = this.props;
+    const {children} = this.props;
 
-    return <li className="news-post">{val}</li>;
+    return (
+        <li className="news-post">{children}</li>
+    )
   }
 }
 

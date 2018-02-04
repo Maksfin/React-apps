@@ -30,9 +30,7 @@ class App extends Component {
         />
         <button onClick={this.addPost}>Добавить</button>
         <ul className="todo-container">
-          {this.state.data.map(d => {
-            return <NewsPost key={d} val={d} />;
-          })}
+          {this.state.data.map(d => <NewsPost key={d}>{d}</NewsPost>)}
         </ul>
       </div>
     );
