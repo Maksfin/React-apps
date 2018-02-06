@@ -3,10 +3,12 @@ import "./NewsPost.css";
 
 class NewsPost extends Component {
   render() {
-    const {children} = this.props;
+    const {text} = this.props;
 
     return (
-        <li className="news-post">{children}</li>
+      <div className="news-post">
+        <p>{text}</p>
+      </div>
     )
   }
 }

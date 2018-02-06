@@ -4,38 +4,38 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    value: "",
-    data: ["Первый пост1", "Второй пост2"]
+    newsInput: "",
+    news : []
   };
 
   handleChange = event => {
-    this.setState({ value: event.target.value });
+    this.setState({ newsInput: event.target.value });
   };
 
-  addPost = () => {
-    if (this.state.value) {
-      this.state.data.push(this.state.value);
+  handleNewPost = () => {
+    if (this.state.newsInput) {
+      this.state.news.push({text: this.state.newsInput});
     }
-    this.setState({ value: "" });
+    this.setState({ newsInput: "" });
   };
 
   
   render() {
-    const {data} = this.state;
-    const {value} = this.state;
+    const {news} = this.state;
+    const {newsInput} = this.state;
     
     return (
       <div className="App">
         <input
           className="todo-input"
           onChange={this.handleChange}
-          value={value}
-          placeholder="Добавьте пункт"
+          placeholder="Какие новости?"
+          value={newsInput}
         />
-        <button onClick={this.addPost}>Добавить</button>
-        <ul className="todo-container">
-          {data.map(d => <NewsPost key={d}>{d}</NewsPost>)}
-        </ul>
+        <button onClick={this.handleNewPost}>Создать новость</button>
+        <div className="todo-container">
+          {news.map(d => <NewsPost key={d.text} text={d.text}/>)}
+        </div>
       </div>
     );
   }
