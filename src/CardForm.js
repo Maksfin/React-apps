@@ -1,15 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import "./CardForm.css";
 
-class CardForm extends Component {
+class CardForm extends React.Component {
   handleChangeForm = e => {
     const { onChangeForm } = this.props;
     const { name, value } = e.target;
     onChangeForm(name, value);
   };
-
-  componentWillUnmount() {
-  }
 
   render() {
     const { cardNumber } = this.props;
