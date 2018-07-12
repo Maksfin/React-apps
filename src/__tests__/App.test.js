@@ -80,6 +80,7 @@ describe('Компонент App', () => {
         expect(wrapper.state().firstName).toEqual('Иван');
       });
     });
+    
 
     describe('handleClickNextForm', () => {
       const wrapper = shallow(<App />);
@@ -94,109 +95,6 @@ describe('Компонент App', () => {
       });
     });
 
-    describe('isFormCommitable', () => {
-      const wrapper = shallow(<App />);
-      it('Присутствует', () => {
-        expect(wrapper.instance().isFormCommitable).toBeDefined();
-      });
-      describe('Если state.step === 1', () => {
-        it(`Должен возвращать true если state.firstName !== '' && state.lastName !== '' && state.email !== '' && state.email.includes('@')`, () => {
-          wrapper.setState({
-            step: 1,
-            lastName: 'test',
-            firstName: 'test',
-            email: 'test@'
-          });
-          expect(wrapper.instance().isFormCommitable()).toBeTruthy();
-        });
-        it(`Должен возвращать false если state.firstName === '' && state.lastName !== '' && state.email !== '' && state.email.includes('@')`, () => {
-          wrapper.setState({
-            step: 1,
-            lastName: 'test',
-            firstName: '',
-            email: 'test@'
-          });
 
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
-        });
-        it(`Должен возвращать false если state.firstName !== '' && state.lastName === '' && state.email !== '' && state.email.includes('@')`, () => {
-          wrapper.setState({
-            step: 1,
-            lastName: '',
-            firstName: 'test',
-            email: 'test@'
-          });
-
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
-        });
-        it(`Должен возвращать false если state.firstName !== '' && state.lastName !== '' && state.email === '' && state.email.includes('@')`, () => {
-          wrapper.setState({
-            step: 1,
-            lastName: 'test',
-            firstName: 'test',
-            email: ''
-          });
-
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
-        });
-      });
-      describe('Если state.step === 2', () => {
-        it('Должен возврать  true если cardNumber.length === 16', () => {
-          wrapper.setState({
-            step: 2,
-            cardNumber: '1324123412341234'
-          });
-          expect(wrapper.instance().isFormCommitable()).toBeTruthy();
-        });
-      });
-      describe('Если state.step !== 1 | 2', () => {
-        it('Должен возврать false', () => {
-          wrapper.setState({
-            step: 3
-          });
-          expect(wrapper.instance().isFormCommitable()).toBeFalsy();
-        });
-      });
-    });
-
-    describe('renderForm', () => {
-      const wrapper = shallow(<App />);
-      it('Присутствует', () => {
-        expect(wrapper.instance().renderForm).toBeDefined();
-      });
-
-      it(`Если state.step === 1 возвращает компонент <PersonalForm firstName={state.firstName} lastName={state.lastName} email={state.email onChangeForm={App.handleChangeForm} />`, () => {
-        wrapper.setState({
-          step: 1,
-          firstName: 'test',
-          lastName: 'test',
-          email: 'test@'
-        });
-        expect(wrapper.instance().renderForm().props).toEqual({
-          firstName: 'test',
-          lastName: 'test',
-          email: 'test@',
-          onChangeForm: wrapper.instance().handleChangeForm
-        });
-      });
-      it(`Если state.step === 2 возвращает компонент <CardForm cardNumber={state.cardNumber} onChangeForm={this.handleChangeForm} onChangeTimeOver={this.handleChangeTimeOver} />`, () => {
-        wrapper.setState({
-          step: 2,
-          cardNumber: '1234'
-        });
-        expect(wrapper.instance().renderForm().props).toEqual({
-          cardNumber: '1234',
-          onChangeForm: wrapper.instance().handleChangeForm,
-          onChangeTimeOver: wrapper.instance().handleChangeTimeOver
-        });
-      });
-      it(`Если state.step === 3 возвращает строку 'Поздравляем!'`, () => {
-        const wrapper = shallow(<App />);
-        wrapper.setState({
-          step: 3
-        });
-        expect(wrapper.instance().renderForm()).toEqual('Поздравляем!');
-      });
-    });
   });
 });
