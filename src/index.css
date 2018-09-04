@@ -4,6 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-html, body, #root {
+html, body, #root, nav {
   height: 100%;
 }

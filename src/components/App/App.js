@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import Video from '../VideoPlayer';
+import CardNumberHolder from '../CardNumberHolder';
+import ModalButton from '../ModalButton';
 import Switcher from '../Switcher';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Switcher>
-          {"VideoPlayer"} {"Card number formating"} {"ModalButton"}
-        </Switcher>
-        <div className="component-wrapper">
+      <Switcher>
           <Video/>
-        </div>
-      </div>
+          <CardNumberHolder/>
+          <ModalButton/>
+      </Switcher>
     )
   }
 }
