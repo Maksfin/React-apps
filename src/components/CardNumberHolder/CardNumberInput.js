@@ -24,6 +24,21 @@ class CardNumberInput extends Component {
     }
   };
 
+  componentWillMount() {
+
+    this.setState({
+      number: this.formatting(this.props.value)
+    })
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps) {
+      this.setState({
+        number: this.formatting(nextProps.value)
+      });
+    }
+  }
+
   handleChange = (event) => {
     this.props.onChange(event.target.value);
   }

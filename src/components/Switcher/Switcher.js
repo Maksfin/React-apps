@@ -25,7 +25,7 @@ class Switcher extends Component {
           <ul className="component-list">
             {
               React.Children.map(children, (item, index) => {
-                const name = item.type.name;
+                const name = item.type.displayName || item.type.name;
 
                 return (
                   <li className="component-list__name"
