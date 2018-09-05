@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Switcher from '../Switcher';
 import {shallow} from 'enzyme';

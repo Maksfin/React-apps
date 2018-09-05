@@ -1,9 +1,11 @@
 import React from 'react';
 import CardNumberHolder from '../CardNumberHolder';
-import {shallow} from 'enzyme';
+import {
+  shallow
+} from 'enzyme';
 
 describe('Компонент CardNumberHolder', () => {
-  const wrapper = shallow(<CardNumberHolder />);
+  const wrapper = shallow( < CardNumberHolder / > );
   describe('Методы класса', () => {
     describe('render', () => {
       it('Присутствует компонент CardNumberInput', () => {
